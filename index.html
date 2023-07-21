@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<header>
+    <h1>books project</h1>
+    <button onclick="showModal()">Add New book</button>
+</header>
+<body>
+    <div id="block">
+        <div class="modal">
+            <h2>add new book</h2>
+          <span id="modalItem"> book : <input type="text"></span>  
+           <span id="modalItem"> writer : <input type="text"></span> 
+            <span id="modalItem">pages number : <input type="number"></span>
+            <span id="modalItem">read or not ? : <input type="checkbox"></span> 
+
+            <button class="submitButton" onclick="hideModal()">Submit</button>
+        </div>
+    </div>
+   
+    
+</body>
+</html>
