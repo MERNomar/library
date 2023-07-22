@@ -1,24 +1,51 @@
-let block = document.querySelector("#block")
+// array to store my books  
+let myLibrary = [
+    {name : "All Tomorrows" , writer : "C.M. Kösemen" , pagesNum : 111 , readOrNot : "did not read yet"} 
+];
+
+let bookName = document.querySelector('#name')
+let author = document.querySelector('#author')
+let pageNum = document.querySelector('#pageNum')
+let readState = document.querySelector('#readState')
+let submit = document.querySelector('.submitButton')
+
+submit.addEventListener('click' , e => {
+ addBookToLibrary() 
+})
 
 
 
-let myLibrary = [];
-
-function Book(name , writer , numberOfpages , readOrnot) {
+// the constructor function
+function Book(name , writer , pagesNum , readOrnot) {
     this.name = name;
     this.writer = writer;
-    this.numberOfpages = numberOfpages;
+    this.pagesNum = pagesNum;
     this.readOrnot = readOrnot;
 }
 
-function addBookToLibrary(book) {
-    myLibrary = [book.name]
-
+// function to push the books to the array
+function addBookToLibrary() {
+    let newbook = new Book(bookName.value , author.value , pageNum.value , readState.checked )
+    myLibrary.push(newbook)
 }
-let allTommorows = new Book("All Tomorrows" , "C.M. Kösemen" , 111 , "did not read yet" )
-addBookToLibrary(allTommorows)
-console.log(myLibrary)
 
+
+
+// function to loob through myLibrary array and display it
+function loobThroughLibrary(library){
+    
+}
+
+
+
+
+
+
+
+
+
+//! the modal part
+let block = document.querySelector("#block")
 function showModal(){
     block.style.display = 'block'
 }
