@@ -12,9 +12,7 @@
 </head>
 <header>
     <h1>books project</h1>
-    <button onclick="showModal()">Add New book</button>
-</header>
-<body>
+    <button onclick="showModal()" class="show-modal">Add New book</button>
     <div id="block">
         <div class="modal">
             <h2>add new book</h2>
@@ -22,10 +20,12 @@
            <span id="modalItem"> writer : <input id="author" type="text"></span> 
             <span id="modalItem">pages number : <input id="pageNum" type="number"></span>
             <span id="modalItem">read or not ? : <input id="readState" type="checkbox"></span> 
-
             <button class="submitButton" onclick="hideModal()">Submit</button>
         </div>
     </div>
+</header>
+<body>
+   
    
     
 </body>

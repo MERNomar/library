@@ -50,5 +50,15 @@ body {
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
-
+.show-modal{
+    background-color: black;
+    color: white;
+    font-size:  25px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.show-modal:hover{
+    background-color: rgb(41, 40, 40);
+}
 
