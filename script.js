@@ -85,6 +85,10 @@ function removeCard(bookCard){
     })
 }
 
+
+// change the read state 
+ 
+
 // function to loob through myLibrary array and display it
 function loobThroughLibrary(library){
     for(let i = 0; i < library.length; i++){
