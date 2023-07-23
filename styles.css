@@ -1,11 +1,12 @@
 html{
     background-color: wheat;
+    font-family: 'Rubik', sans-serif;
 }
 body { 
-    width : 700px; 
     margin: auto;
     text-align: center;
-    font-family: 'Roboto Slab', serif;}
+    font-family: 'Rubik', sans-serif;
+}
 .modal {
     z-index: 1;
     width: 200px;
@@ -22,8 +23,7 @@ body {
     margin-top: 10px;
 }
 .submitButton{
-    font-family: 'Roboto Slab', serif , bold;
-    background-color: black;
+    font-family: 'Rubik', sans-serif;    background-color: black;
     color: white;
     font-size: large;
     cursor: pointer;
@@ -61,4 +61,32 @@ body {
 .show-modal:hover{
     background-color: rgb(41, 40, 40);
 }
+header{
+    background-color: rgb(117, 139, 139);
+    padding: 25px ;
+    border: rgba(0, 0, 0, 0.123) solid;
+    border-radius: 5px;
+}
+h1{
+    font-weight: bolder;
+    font-size: 60px
+}
+#books-grid{
+    display: inline-grid;
+    grid-template-columns: repeat(10, auto);
+    margin-top: 5px;
+    width: 1500px;
+}
+.books-grid-item{
+background-color: black;
+width: 120px;
+height: 120px;
+margin: auto;
+color: white;
+padding: 5px;
+margin-top: 5px;
 
+}
+button{
+    font-family: 'Rubik', sans-serif;
+}
