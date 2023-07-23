@@ -1,14 +1,13 @@
 // array to store my books  
 let dataSetNumber = 0;
 let myLibrary = [
-    { name: "Naruto", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
-    { name: "Naruto", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
-    { name: "Naruto", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
-    { name: "Naruto", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
-
-
-
+    { name: "1", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
+    { name: "2", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
+    { name: "3", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
+    { name: "4", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
    ];
+
+let formTitle = document.querySelector('.modal-title')
 let bookName = document.querySelector('#name')
 let author = document.querySelector('#author')
 let pageNum = document.querySelector('#pageNum')
@@ -29,10 +28,10 @@ function Book(name , writer , pagesNum , readOrnot) {
     this.readOrnot = readOrnot;
 }
 
-// function to push the books to the array
+// function to push the books to the array and checking valeus before that
 function addBookToLibrary() {
     let newbook = new Book(bookName.value , author.value , pageNum.value , readState.checked )
-    if (newbook.name === "" || newbook.author === "" || newbook.pagesNum === "") return
+    if (newbook.name === "" || newbook.author === "" || newbook.pagesNum <= 0) return formTitle.innerHTML = "fill the required fields" , formTitle.style.color = 'red'
     myLibrary.push(newbook)
 
     newBookCard(newbook)
@@ -79,7 +78,9 @@ function removeCard(bookCard){
     bookCard.appendChild(deleteBook)
 
     deleteBook.addEventListener('click' , e => {
-        bookCard.display = "none"
+        bookCard.remove()
+        myLibrary.pop(bookCard.dataset.cardnum)
+        console.log()
 
     })
 }
