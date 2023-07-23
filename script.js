@@ -1,8 +1,14 @@
 // array to store my books  
+let dataSetNumber = 0;
 let myLibrary = [
     { name: "Naruto", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
-   ];
+    { name: "Naruto", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
+    { name: "Naruto", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
+    { name: "Naruto", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
 
+
+
+   ];
 let bookName = document.querySelector('#name')
 let author = document.querySelector('#author')
 let pageNum = document.querySelector('#pageNum')
@@ -28,31 +34,55 @@ function addBookToLibrary() {
     let newbook = new Book(bookName.value , author.value , pageNum.value , readState.checked )
     if (newbook.name === "" || newbook.author === "" || newbook.pagesNum === "") return
     myLibrary.push(newbook)
+
     newBookCard(newbook)
     hideModal()
 }
 
-// function to create new book card and push to the library
+// function to create new book card and push to the library by useing the //* addBookToLibrary()
 function newBookCard(book){
+    // declaring all the needed values
    let bookCard = document.createElement('div')
-   bookCard.className = 'books-grid-item'
-   booksContainer.appendChild(bookCard)
-   console.log(bookCard)
    let bookName = document.createElement('div')
    let bookAuthor = document.createElement('div')
    let bookPages = document.createElement('div')
    let readState = document.createElement('div')
+
+// adding the name , state , authors details to the cards and the array
+   bookCard.setAttribute('data-cardnum' , dataSetNumber)
+   bookCard.className = 'books-grid-item'
    bookName.innerHTML = book.name
    bookAuthor.innerHTML = book.writer
    bookPages.innerHTML = book.pagesNum
    readState.innerHTML = book.readOrnot
+   booksContainer.appendChild(bookCard)
+
+   //appending childs to the book card 
    bookCard.appendChild(bookName)
    bookCard.appendChild(bookAuthor)
    bookCard.appendChild(bookPages)
    bookCard.appendChild(readState)
-    
+
+   dataSetNumber = dataSetNumber+1
+
+   // delete the book button 
+   removeCard(bookCard)
+
 }
 
+// remove button function 
+function removeCard(bookCard){
+
+    let deleteBook = document.createElement('div')
+    deleteBook.innerHTML = "Remove"
+    deleteBook.className = 'deleteBook'
+    bookCard.appendChild(deleteBook)
+
+    deleteBook.addEventListener('click' , e => {
+        bookCard.display = "none"
+
+    })
+}
 
 // function to loob through myLibrary array and display it
 function loobThroughLibrary(library){
@@ -66,9 +96,6 @@ loobThroughLibrary(myLibrary)
 
 
 
-
-
-
 //! the modal part
 let block = document.querySelector("#block")
 function showModal(){
@@ -76,11 +103,13 @@ function showModal(){
 }
 function hideModal(){
     block.style.display = 'none'
-    bookName.innerHTML = ""
-    author.innerHTML = ""
-    pageNum.innerHTML = ""
-    readState.checked
-    
+    clearContent()
+}
+function clearContent(){
+    bookName.value = ""
+    author.value = ""
+    pageNum.value = ""
+    readState.checked = false
 }
 document.querySelector(".close").addEventListener('click' , e => {
     hideModal()

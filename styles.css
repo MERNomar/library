@@ -73,18 +73,20 @@ h1{
 }
 #books-grid{
     display: inline-grid;
-    grid-template-columns: repeat(10, auto);
+    grid-template-columns: repeat(7, 200px);
     margin-top: 5px;
     width: 1500px;
 }
 .books-grid-item{
 background-color: black;
-width: 120px;
+width: 170px;
 height: 120px;
 margin: auto;
 color: white;
 padding: 5px;
 margin-top: 5px;
+border-radius: 5px;
+text-align: center;
 
 }
 button{
@@ -98,4 +100,13 @@ button{
 }
 .close:hover{
     background-color: rgb(66, 61, 61);
+}
+.deleteBook {
+    background-color: rgb(158, 76, 76);
+    border-radius: 5px;
+    cursor : pointer;
+    margin-top: 7px;
+}
+.deleteBook:hover{
+    background-color: rgb(177, 95, 95);
 }
