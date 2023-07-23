@@ -30,8 +30,6 @@ function addBookToLibrary() {
     myLibrary.push(newbook)
     newBookCard(newbook)
     hideModal()
-
-
 }
 
 // function to create new book card and push to the library
@@ -78,5 +76,12 @@ function showModal(){
 }
 function hideModal(){
     block.style.display = 'none'
+    bookName.innerHTML = ""
+    author.innerHTML = ""
+    pageNum.innerHTML = ""
+    readState.checked
     
 }
+document.querySelector(".close").addEventListener('click' , e => {
+    hideModal()
+})

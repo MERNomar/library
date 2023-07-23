@@ -90,3 +90,12 @@ margin-top: 5px;
 button{
     font-family: 'Rubik', sans-serif;
 }
+.close {
+    color: red;
+    background-color: black;
+    cursor: pointer;
+
+}
+.close:hover{
+    background-color: rgb(66, 61, 61);
+}
