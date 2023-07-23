@@ -1,7 +1,7 @@
 // array to store my books  
 let dataSetNumber = 0;
 let myLibrary = [
-    { name: "1", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: "read" },
+    { name: "1", writer: "Masashi Kishimoto", pagesNum:1 , readOrnot: true },
    
    ];
 
@@ -30,8 +30,6 @@ function Book(name , writer , pagesNum , readOrnot) {
 function addBookToLibrary() {
     let newbook = new Book(bookName.value , author.value , pageNum.value , readState.checked )
     if (newbook.name === "" || newbook.author === "" || newbook.pagesNum <= 0) return formTitle.innerHTML = "fill the required fields" , formTitle.style.color = 'red'
-    if (readState.checked === true) {readState.checked = "read"}
-    if (readState.checked === false) {readState.checked = "not read"}
     myLibrary.push(newbook)
 
     newBookCard(newbook)
@@ -40,6 +38,7 @@ function addBookToLibrary() {
 
 // function to create new book card and push to the library by useing the //* addBookToLibrary()
 function newBookCard(book){
+    
     // declaring all the needed values
    let bookCard = document.createElement('div')
    let bookName = document.createElement('div')
@@ -53,7 +52,12 @@ function newBookCard(book){
    bookName.innerHTML = book.name
    bookAuthor.innerHTML = book.writer
    bookPages.innerHTML = book.pagesNum
-   readState.innerHTML = book.readOrnot
+   if(book.readOrnot === true){
+    readState.innerHTML = "read"
+   }
+   if(book.readOrnot === false){
+    readState.innerHTML = "not read"
+   }
    booksContainer.appendChild(bookCard)
 
    //appending childs to the book card 
