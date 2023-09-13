@@ -11,7 +11,7 @@ app.use(express.static(`public`))
 app.set('view engine' , 'ejs')
 const port = 8080
 
-mongoose.connect(url).then(e => {
+mongoose.connect(url , {useNewUrlParser : true , useUnifiedTopology : true }).then(e => {
     app.listen(port , () => {
         console.log(`listening to http://localhost:${port}`)
     })
