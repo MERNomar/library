@@ -3,10 +3,37 @@
     <%- include('./partials/header.ejs')  %>
 <body>
   <form action="/">
-    <label for="username">username :    <input required id="name" type="email"></label>
-  <label for="email">email :   <input required id="email" type="email"></label>
-  <label for="password">  password :   <input required id="password" type="password"></label>
+    <label for="username" >username :</label>
+    <input required name="username" id="name" >
+  <label for="email">email :</label>
+  <input required id="email" name="email" type="email">
+  <label for="password">  password :</label>
+  <input required id="password" name="password" type="password">
   <button type="submit">Signup</button>
   </form>  
+  <script>
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit' , e => {
+      e.preventDefault()
+      
+      const username = form.username.value;
+      const email = form.email.value;
+      const password = form.password.value;
+
+      const signupData = {email,username,password}
+      const userInfo = JSON.stringify(signupData)
+      console.log(userInfo)
+    fetch('http://localhost:8080/signup', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: userInfo
+})
+   .then(response => console.log(response))
+  
+    })
+  </script>
 </body>
 </html>

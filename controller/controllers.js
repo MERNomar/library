@@ -55,6 +55,7 @@ const signup_get = (req, res) => {
 };
 
 const signup_post = async (req, res) => {
+  console.log(req.body)
   const { username, email, password } = req.body;
   try {
     const user = await User.create({ username, email, password });
@@ -62,7 +63,6 @@ const signup_post = async (req, res) => {
   } catch (err) {
     const errors = errorHandle(err);
     res.status(404).json(errors);
-    
   }
 };
 
