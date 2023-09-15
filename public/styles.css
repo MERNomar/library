@@ -63,8 +63,10 @@ body {
 }
 header{
     background-color: rgb(117, 139, 139);
-    padding: 25px ;
     border-bottom: rgba(0, 0, 0, 0.123) solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 h1{
     font-weight: bolder;
@@ -113,4 +115,17 @@ button{
 a {
     all:unset;
 }
+form {
+    display: flex;
+    margin: auto;
+    align-self: center;
+    align-items: center;
+    flex-direction: column;
+    
+    height: auto;
+    width: 700px;
+}
 
+button{
+    margin-top: 5px;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include('./partials/header.ejs')  %>
-    <header><h1>login</h1></header>
+ <h1>login</h1>
 <body>
   <form action="/">
   <label for="email">email :</label>
@@ -23,7 +23,7 @@
       const signupData = {email,password}
       const userInfo = JSON.stringify(signupData)
       console.log(userInfo)
-    fetch('http://localhost:8080/login', {
+    fetch('http://localhost:8080/', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
