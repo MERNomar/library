@@ -53,7 +53,7 @@ body {
 .show-modal{
     background-color: black;
     color: white;
-    font-size:  25px;
+    font-size:  19px;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -70,13 +70,13 @@ header{
 }
 h1{
     font-weight: bolder;
-    font-size: 60px
+    font-size: 30px
 }
 #books-grid{
     display: inline-grid;
     grid-template-columns: repeat(7, 200px);
     margin-top: 5px;
-    width: 1500px;
+    width: auto;
 }
 .books-grid-item{
 background-color: black;
@@ -126,6 +126,42 @@ form {
     width: 700px;
 }
 
+label{
+    margin-top: 10px;
+}
+
 button{
     margin-top: 5px;
+}
+
+.error{
+    color: brown;
+    font-size: 10px;
+}
+
+form button {
+    color: aliceblue;
+    background-color: black;
+    padding: 3px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+form button:hover {
+    color: aliceblue;
+    background-color: rgb(51, 49, 49);
+    padding: 3px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.login{
+    border-right: 2px rgb(88, 88, 88) solid;
+    margin-right: 5px;
+}
+a{
+    cursor: pointer;
+}
+
+a:hover{
+    color: rgb(80, 82, 83);
 }

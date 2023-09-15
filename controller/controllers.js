@@ -1,12 +1,26 @@
 const User = require("../models/user");
 const Books = require("../models/book");
 
+const jwt = require("jsonwebtoken");
+
+const expireTime = 1 * 24 * 60 * 60;
+
+const createToken = (id) => {
+  return jwt.sign({ id }, "omar ahmed something", { expiresIn: expireTime });
+};
+
+const loginErrorHandle = (err) => {
+  const jsonError = {error : 'Email or Password is incorrect'}
+  if (err) {
+    return jsonError
+  }
+}
+
 const errorHandle = (err) => {
   let errorData = { email: "", username: "", password: "" };
 
   if (err.code === 11000) {
     errorData["email"] = "email is already used !";
-    return errorData;
   }
 
   if (err.message.includes("user validation failed")) {
@@ -55,22 +69,50 @@ const signup_get = (req, res) => {
 };
 
 const signup_post = async (req, res) => {
-  console.log(req.body)
   const { username, email, password } = req.body;
   try {
     const user = await User.create({ username, email, password });
-    res.status(201).json(user);
+    const token = createToken(user._id);
+    res.cookie("auth", token , {maxAge : expireTime , httpOnly : true});
+    res.status(201).json({ user: user._id });
+    console.log("user created");
   } catch (err) {
     const errors = errorHandle(err);
-    res.status(404).json(errors);
+    console.log(err);
+    res.status(404).json({ errors });
   }
 };
 
-const login_post = (req, res) => {
+const login_post = async (req, res) => {
   const { email, password } = req.body;
+  try {
+    const data = await User.login(email, password);
+    const token = createToken(data._id);
+    res.cookie("auth", token , {maxAge : expireTime * 1000 , httpOnly : true});
+    console.log(data._id)
 
-  console.log(email + password);
+    res.status(201).json({data})
+  } catch (err) {
+    const errors = loginErrorHandle(err)
+    console.log(err);
+    res.status(404).json( errors );
+
+  }
 };
+
+const removeAllUsers = (req, res) => {
+  User.find().then((e) => {
+    e.forEach((user) => {
+      User.findByIdAndDelete(user.id).then((e) => {
+        console.log("done");
+      });
+    });
+  });
+};
+
+const get_homePage = (req , res) => {
+  res.render('homepage')
+}
 
 module.exports = {
   main_getter,
@@ -80,4 +122,6 @@ module.exports = {
   signup_get,
   signup_post,
   login_post,
+  removeAllUsers,
+  get_homePage
 };

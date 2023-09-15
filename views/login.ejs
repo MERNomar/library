@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/header.ejs')  %>
+    <%- include('./partials/loginheader.ejs')  %>
  <h1>login</h1>
-<body>
-  <form action="/">
-  <label for="email">email :</label>
-  <input required id="email" name="email" type="email">
-  <label for="password">  password :</label>
-  <input required id="password" name="password" type="password">
-  <button type="submit">Signup</button>
-  </form>  
-  <script>
-    const form = document.querySelector('form')
+ <body>
+   <form action="/">
+     <label for="email">Email</label>
+     <input required id="email" name="email" type="email" />
+     <label for="password"> Password</label>
+     <input required id="password" name="password" type="password" />
+     <div class="login error"> </div>
+     <button type="submit">Login</button>
+   </form>
+   <script>
+     const form = document.querySelector("form");
+     const loginError = document.querySelector(".login");
 
-    form.addEventListener('submit' , e => {
-      e.preventDefault()
-      
-      const username = form.username.value;
-      const email = form.email.value;
-      const password = form.password.value;
 
-      const signupData = {email,password}
-      const userInfo = JSON.stringify(signupData)
-      console.log(userInfo)
-    fetch('http://localhost:8080/', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json'
-    },
-    body: userInfo
-})
-   .then(response => console.log(response))
-  
-    })
-  </script>
+     form.addEventListener("submit",async (e) => {
+       e.preventDefault();
+
+       const email = form.email.value;
+       const password = form.password.value;
+
+       const signupData = { email , password };
+       const userInfo = JSON.stringify(signupData);
+       
+       try{
+       const createUserReq = await fetch("/login", { method: "POST", headers: {"Content-Type": "application/json"}, body: userInfo});
+       const jsonRes = await createUserReq.json();
+       console.log(jsonRes)
+       if (jsonRes.error){ 
+        loginError.textContent = jsonRes.error
+        }
+       if(jsonRes.data){
+         location.assign('/')
+       }
+     }
+       catch(err){
+         console.log(err)
+       }
+        
+     });
+   </script>
 </body>
 </html>
