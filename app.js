@@ -14,6 +14,12 @@ app.set('view engine' , 'ejs')
 const port = process.env.PORT
 const url = process.env.MONGODB_CONNECT_URL
 
+app.get('/cookie' , (req , res) => {
+    res.setHeader('Set-Cookie' , 'ahmed=thing')
+    res.cookie('omar' , true)
+    res.send('you have a cookie now')
+})
+
 
 mongoose.connect(url , {useNewUrlParser : true , useUnifiedTopology : true }).then(e => {
     app.listen(port , () => {
