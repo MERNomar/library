@@ -120,6 +120,21 @@ const logout_get = (req , res) => {
   res.redirect('/homepage')
 }
 
+const create_book_bulk = (req, res) => {
+  req.body.readState = 'on'
+
+  const book = new Books(req.body);
+  console.log(req.body)
+  book
+    .save()
+    .then((e) => {
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 module.exports = {
   main_getter,
   create_book,
@@ -130,5 +145,6 @@ module.exports = {
   login_post,
   removeAllUsers,
   get_homePage,
-  logout_get
+  logout_get,
+  create_book_bulk
 };

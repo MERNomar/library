@@ -14,6 +14,7 @@ router.get('/logout'  , bookControllers.logout_get)
 router.get('/' , auth , bookControllers.main_getter )
 router.post('/' , auth , bookControllers.create_book )
 router.get('/:id' , auth ,bookControllers.book_delete)
+router.post('/bulk'  , bookControllers.create_book_bulk)
 
 
 
