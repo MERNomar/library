@@ -23,12 +23,13 @@ const errorHandle = (err) => {
     errorData["email"] = "email is already used !";
   }
 
-  if (err.message.includes("user validation failed")) {
+  if (err.message.includes("neoUser validation failed" || "user validation failed" )) {
     Object.values(err.errors).forEach(({ properties }) => {
       errorData[properties.path] = properties.message;
+
     });
   }
-  return errorData;
+  return errorData
 };
 
 const create_book = (req, res) => {
@@ -78,7 +79,7 @@ const signup_post = async (req, res) => {
     console.log("user created");
   } catch (err) {
     const errors = errorHandle(err);
-    console.log(err);
+    console.log(errors);
     res.status(404).json({ errors });
   }
 };
@@ -114,6 +115,11 @@ const get_homePage = (req , res) => {
   res.render('homepage')
 }
 
+const logout_get = (req , res) => {
+  res.cookie('auth' , '' , {maxAge : 1})
+  res.redirect('/homepage')
+}
+
 module.exports = {
   main_getter,
   create_book,
@@ -123,5 +129,6 @@ module.exports = {
   signup_post,
   login_post,
   removeAllUsers,
-  get_homePage
+  get_homePage,
+  logout_get
 };

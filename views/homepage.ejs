@@ -1,7 +1,14 @@
 <%- include('./partials/loginheader.ejs')  %>
 <body>
-    <h2>welcome to library !</h2>
+    <% if (user) {  %>
+    <h2>welcome to library <%= user.username %> !</h2>
+    <p><a href="/">Check your books now !</a></p>
+    <% }else { %>
+        <h2>welcome to library !</h2>
+        <p><a href="/login">Login now</a> or <a href="/sigup">register if you don't have an account !</a></p>
+        <% } %>
     <section><p>store and memorize your favorite books</p></section>
     <section><p>project is built using <b> ejs , node , express , mongodb </b></p></section>
 </body>
+<%- include('./partials/footer.ejs') %>
 </html>

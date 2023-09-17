@@ -11,30 +11,38 @@
     <link rel="stylesheet" href="/styles.css">
 </head>
 <header >
-    <h1>Library project</h1>
-    <button onclick="showModal()" class="show-modal">Add New book</button>
+      <h1><a href="/homepage">Library project</a></h1>
+    <div>
+    <a class="logout" href="/logout">Sign out  </a>
+    <button onclick="showModal()" class="show-modal">Add New book</button></div>
     <div id="block">
         <div class="modal">
-            <form action="/" method="POST">
+            <form style="all: unset;" action="/" method="POST">
             <div class="close">close</div>
             <h2 class="modal-title">add new book</h2>
-          <span id="modalItem"> book : <input name="book" required autocomplete="off" id="name" type="text"></span>  
-           <span id="modalItem"> writer : <input name="author" required autocomplete="off"  id="author" type="text"></span> 
-            <span id="modalItem">pages number : <input name="pageNum" required autocomplete="off"  id="pageNum" type="number"></span>
-            <span id="modalItem">read or not ? : <input name="readState" required autocomplete="off"  id="readState" type="checkbox"></span> 
-            <button  class="submitButton">Submit</button></form>
+          <span id="modalItem"> Book name : <input name="book" required autocomplete="off" id="name" type="text"></span>  
+           <span id="modalItem"> Author : <input name="author" required autocomplete="off"  id="author" type="text"></span> 
+            <span id="modalItem">Pages count : <input name="pageNum" required autocomplete="off"  id="pageNum" type="number"></span>
+            <span id="modalItem">did your read it ? : <input name="readState"  autocomplete="off"  id="readState" type="checkbox"></span> 
+            <button  class="submitButton">Add book</button></form>
         </div>
     </div>
 </header>
 <body>
     <div id="books-grid">
     <% books.forEach(book => { %>
-        <div class="books-grid-item">
-        <div><%= book.book %></div>
-        <div><%= book.author %></div>
-        <div><%= book.pageNum %></div>
-        <div><%= book.readState %></div>
-        <a class="deleteBook" href='/<%= book.id  %>'>Delete</a>
+        <div class="books-grid-item ">
+        <div class="book-properties">
+        <div class="item">Book name: <%= book.book %></div>
+        <div class="item">Author : <%= book.author %></div>
+        <div class="item">Page count : <%= book.pageNum %></div>
+        <% if (book.readState === 'on'){ %>
+            <div class="item">I Finished it</div>
+        <% }else{ %>
+            <div class="item">I did not read it</div>
+        <% } %>
+    </div>
+      <a class="deleteBook">Delete book</a>
     </div> 
    <% }); %>  </div>
 <script>
@@ -56,9 +64,11 @@
     document.querySelector(".close").addEventListener('click' , e => {
         hideModal()
     })
-const deleteButton = document.getElementsByClassName('deleteBook')
+   
+
 
     
     </script>
 </body>
+<%- include('./partials/footer.ejs') %>
 </html>

@@ -13,6 +13,11 @@
 <header >
     <h1><a href="/homepage">Library project</a></h1>
     <div>
-    <a class="login" href="/login">Login  </a>
+        <% if(user) { %>
+            <h3 style="color: rgb(39, 38, 38);">Welcome <%= user.username %> !</h3>
+        <% }else{ %>
+    <a class="login-header" href="/login">Login  </a>
     <a class="register" href="/signup">Register</a></div>
+    <% } %>
+
 </header>
