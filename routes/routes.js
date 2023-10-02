@@ -7,6 +7,7 @@ const router = express.Router()
 
 router.get('*' , userData)
 router.get('/homepage'  , bookControllers.get_homePage)
+router.get('/result' , bookControllers.find_book)
 router.post('/signup'  , userControllers.signup_post)
 router.get('/signup'  , userControllers.signup_get)
 router.get('/login'  , userControllers.login_get)

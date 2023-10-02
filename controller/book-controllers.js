@@ -5,7 +5,8 @@ const create_book = (req, res) => {
   book
     .save()
     .then((e) => {
-      res.redirect("/");
+      setTimeout(res.redirect("/"), 15000);
+      
     })
     .catch((err) => {
       console.log(err);
@@ -33,6 +34,10 @@ const get_homePage = (req, res) => {
   res.render("homepage");
 };
 
+/*const find_book = (req , res){
+  res.send(req.body)
+}*/
+
 
 
 module.exports = {
@@ -40,4 +45,6 @@ module.exports = {
   create_book,
   book_delete,
   get_homePage,
+  find_book
 };
+

@@ -12,6 +12,7 @@
 </head>
 <header >
       <h1><a href="/homepage">Library project</a></h1>
+      <h4>Search <input type="text"><img class="search-icon" src="/search.png" alt="search"></h4> 
     <div>
     <a class="logout" href="/logout">Sign out  </a>
     <button onclick="showModal()" class="show-modal">Add New book</button></div>
@@ -20,11 +21,11 @@
             <form style="all: unset;" action="/" method="POST">
             <div class="close">close</div>
             <h2 class="modal-title">add new book</h2>
-          <span id="modalItem"> Book name : <input name="book" required autocomplete="off" id="name" type="text"></span>  
+          <span id="modalItem"> ISBN code : <input name="isbn" required autocomplete="off" id="isbn" type="text"><img src="/magic-wand-wizard.png" class="rando" alt="randomNum"></span>  
           <span id="modalItem"> Book name : <input name="book" required autocomplete="off" id="name" type="text"></span>  
            <span id="modalItem"> Author : <input name="author" required autocomplete="off"  id="author" type="text"></span> 
-            <span id="modalItem">Pages count : <input name="pageNum" required autocomplete="off"  id="pageNum" type="number"></span>
-            <span id="modalItem">did your read it ? : <input name="readState"  autocomplete="off"  id="readState" type="checkbox"></span> 
+            <span id="modalItem">Pages count : <input name="pageNum" required autocomplete="off"  id="pageNum" min="0" type="number"></span><br>
+            <span id="modalItem"> did your read it ? : <input name="readState"  autocomplete="off"  id="readState" type="checkbox"></span> 
             <button  class="submitButton">Add book</button></form>
         </div>
     </div>
@@ -34,7 +35,7 @@
     <% books.forEach(book => { %>
         <div class="books-grid-item ">
         <div class="book-properties">
-        <div class="item"> ISBN code: <%= book.code %></div>
+        <div class="item"> ISBN code: <%= book.isbn %></div>
         <div class="item">Book name: <%= book.book %></div>
         <div class="item">Author : <%= book.author %></div>
         <div class="item">Page count : <%= book.pageNum %></div>
